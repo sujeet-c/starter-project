@@ -2,7 +2,6 @@ const router = require('express').Router();
 const authorize = require('../middleware/authorize');
 const pool = require('../db');
 
-// check if current user has a registration row
 router.get('/me', authorize, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM registration WHERE contact_email = $1', [req.user.email || req.user.user_email]);
@@ -14,13 +13,11 @@ router.get('/me', authorize, async (req, res) => {
   }
 });
 
-// create a registration row for the authenticated user
 router.post('/', authorize, async (req, res) => {
   try {
     const { company_name, contact_person, status } = req.body;
     const contact_email = req.user.email || req.user.user_email;
 
-    // if already exists, return it
     const existing = await pool.query('SELECT * FROM registration WHERE contact_email = $1', [contact_email]);
     if (existing.rows.length > 0) return res.status(400).json({ msg: 'Already registered', registration: existing.rows[0] });
 
