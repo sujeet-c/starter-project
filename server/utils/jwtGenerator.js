@@ -5,7 +5,7 @@ function jwtGenerator(user) {
 
   const payload = {
     user: {
-      id: user.id,
+      id: user.id||null,
       email: user.email,
       name: user.name || null,
       role: user.role || null,

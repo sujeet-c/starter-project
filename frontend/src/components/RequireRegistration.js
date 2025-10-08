@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { authHeaders } from '../utils/auth';
 import RegistrationPopup from './RegistrationPopup';
 
 export default function RequireRegistration({ children }) {
@@ -27,7 +28,7 @@ export default function RequireRegistration({ children }) {
       try {
         const res = await fetch('http://localhost:5000/registration/me', {
           method: 'GET',
-          headers: { jwt_token: localStorage.getItem('token') }
+          headers: authHeaders()
         });
         const data = await res.json();
         if (res.ok && data.registered) {
@@ -58,7 +59,7 @@ export default function RequireRegistration({ children }) {
     try {
       const res = await fetch('http://localhost:5000/registration', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', jwt_token: localStorage.getItem('token') },
+        headers: authHeaders(),
         body: JSON.stringify(payload)
       });
       const data = await res.json();

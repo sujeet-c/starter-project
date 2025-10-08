@@ -1,20 +1,15 @@
-const router = require("express").Router();
-const authorize = require("../middleware/authorize");
-const pool = require("../db");
+const router = require('express').Router();
+const authorize = require('../middleware/authorize');
+const userModel = require('../models/userModel');
 
-router.post("/", authorize, async (req, res) => {
+router.post('/', authorize, async (req, res) => {
   try {
-    const result = await pool.query(
-      "SELECT user_id, user_name, user_email, role FROM users WHERE user_id = $1",
-      [req.user.id]
-    );
-    const row = result.rows[0] || {};
-
+    const row = await userModel.findById(req.user.id) || {};
     const role = row.role;
     return res.json({ user_name: row.user_name, user_email: row.user_email, role });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+    res.status(500).send('Server error');
   }
 });
 

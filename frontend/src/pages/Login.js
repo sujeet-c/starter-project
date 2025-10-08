@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import './LoginSignup.css';
 import { setToken } from '../utils/auth';
@@ -10,9 +10,6 @@ const Login = () => {
   const navigate = useNavigate();
   const auth = useAuth();
 
-  useEffect(() => {
-    console.log('Login component mounted');
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +23,6 @@ const Login = () => {
       const data = await res.json();
       if (res.ok && data.jwtToken) {
         setToken(data.jwtToken);
-        // update context
         if (auth && auth.login) auth.login(data.jwtToken);
         navigate('/');
       } else {

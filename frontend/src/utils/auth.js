@@ -17,5 +17,5 @@ export function isAuthenticated() {
 
 export function authHeaders() {
   const token = getToken();
-  return token ? { 'Content-Type': 'application/json', 'jwt_token': token } : { 'Content-Type': 'application/json' };
+  return token ? { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` } : { 'Content-Type': 'application/json' };
 }

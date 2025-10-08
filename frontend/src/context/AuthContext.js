@@ -37,10 +37,12 @@ export function AuthProvider({ children }) {
     if (ok) fetchUser();
   }, [fetchUser]);
 
-  const login = async (token) => {
+  const login = (token) => {
     persistToken(token);
     setIsAuthenticated(true);
-    await fetchUser();
+    fetchUser().catch(err => {
+      console.error('fetchUser (login) error', err);
+    });
   };
 
   const logout = () => {

@@ -12,13 +12,12 @@ function Home() {
   const heroImages = [hero1, hero2, hero3, hero4];
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  });
 
   const nextSlide = () => {
     setCurrentIndex((currentIndex + 1) % heroImages.length);

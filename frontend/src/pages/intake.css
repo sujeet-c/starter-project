@@ -1,0 +1,190 @@
+/* ===== Global Styles ===== */
+body {
+  background: linear-gradient(135deg, #eef2f3, #8e9eab);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* ===== Page Container ===== */
+.intake-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ===== Form Card ===== */
+.intake-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 800px;
+  padding: 30px 40px;
+  transition: transform 0.3s ease;
+}
+
+.intake-card:hover {
+  transform: scale(1.01);
+}
+
+.intake-card h2 {
+  text-align: center;
+  color: #004aad;
+  margin-bottom: 25px;
+}
+
+/* ===== Form Layout ===== */
+.row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.row label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.row input,
+.row textarea,
+.row select {
+  border: 1px solid #0f0202;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.row input:focus,
+.row textarea:focus,
+.row select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}
+
+/* ===== Grid (for two-column layout) ===== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ===== Fieldsets ===== */
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-weight: 600;
+  color: #004aad;
+  padding: 0 8px;
+}
+
+fieldset label {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: #007bff;
+}
+
+/* ===== File Upload ===== */
+.files-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding-left: 0;
+}
+
+.files-list li {
+  background: #f3f6fa;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* ===== Buttons ===== */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button.primary {
+  background: #007bff;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+button.primary:hover {
+  background: #0056d2;
+}
+
+button.ghost {
+  background: white;
+  color: #007bff;
+  border: 2px solid #007bff;
+}
+
+button.ghost:hover {
+  background: #007bff;
+  color: white;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .intake-card {
+    padding: 25px;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  fieldset {
+    padding: 12px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .intake-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .row input,
+  .row textarea,
+  .row select {
+    font-size: 14px;
+  }
+}
