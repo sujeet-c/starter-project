@@ -27,7 +27,7 @@ router.post("/register", validInfo, async (req, res) => {
       [name, email, bcryptPassword]
     );
 
-    // generate jwt token and return to client so user is logged in after signup
+  
   const u = { id: newUser.rows[0].user_id, email: newUser.rows[0].user_email, name: newUser.rows[0].user_name, role: newUser.rows[0].role };
   const jwtToken = jwtGenerator(u);
   return res.json({ jwtToken });
